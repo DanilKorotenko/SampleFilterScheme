@@ -134,22 +134,6 @@ protected:
      */
 
     virtual void handleClose(IOService* client, IOOptionBits options);
-	
-#ifdef FILTER_BOOT_VOLUME
-	
-	/*
-     * Attach the given media object to the device tree plane.
-     */
-
-    virtual bool attachMediaObjectToDeviceTree(IOMedia* media);
-
-    /*
-     * Detach the given media object from the device tree plane.
-     */
-
-    virtual void detachMediaObjectFromDeviceTree(IOMedia* media);
-	
-#endif
 
 public:
 

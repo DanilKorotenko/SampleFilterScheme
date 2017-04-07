@@ -43,9 +43,5 @@
 		<key>com.apple.iokit.IOStorageFamily</key>
 		<string>1.6</string>
 	</dict>
-#ifdef FILTER_BOOT_VOLUME
-	<key>OSBundleRequired</key>
-	<string>Local-Root</string>
-#endif
 </dict>
 </plist>

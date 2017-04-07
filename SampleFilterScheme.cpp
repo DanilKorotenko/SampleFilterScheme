@@ -191,56 +191,11 @@ bool com_apple_dts_driver_SampleFilterScheme::start(IOService* provider)
             // Attach the new media to this driver
 
             _childMedia = childMedia;
-            
+
             childMedia->attach(this);
-			
-#ifdef FILTER_BOOT_VOLUME
 
-			/*
-				This next call allows this filter scheme to be installed on the boot partition.
-				
-				First, some background on why this is necessary.
-				
-				Once Open Firmware (OF) has chosen the volume to boot from, it loads the secondary loader (BootX)  
-				from that volume and jumps to it. The secondary loader is responsible for actually loading
-				and running the kernel, passing to it various parameters that are inherited from OF
-				(primarily the device tree).
-				
-				Once the kernel comes up, it has to mount the root volume. By this point OF is no
-				longer running, so the kernel determines the root volume by interpreting a parameter that  
-				OF passed to it. This parameter is the "rootpath" property of the "/chosen" node in the OF
-				device tree. The kernel gets this value and looks in the I/O Registry for a node whose
-				OF path matches this value. The kernel then uses this node as the root device.
-				
-				The kernel has no knowledge that a filter scheme was installed on top of that node,
-				so it continues booting from the unfiltered media object. Later on the  
-				Disk Arbitration server comes up, notices that the filter scheme is  
-				publishing a new leaf node that hasn't been mounted on, and mounts the file  
-				system on that node. Hence two copies of the boot volume appear on the desktop with
-				separate data paths, a recipe for quickly corrupting the contents of the volume.
-				
-				The solution is for the filter scheme to "move" the last device tree component from its parent
-				to its child. That is, it needs to detach the parent from the device tree path, keeping track
-				of its name@location value, then attach it to the child. This must be done before publishing the
-				new media object via registerService(). The reverse needs to be done in stop().
-				
-				Note that if you want this filter scheme to be loaded at boot time (so that it can be installed
-				on top of the boot volume), this project has a second target called "Filter Boot Volume". Building
-				this target will include the code bracketed by #ifdef FILTER_BOOT_VOLUME and will include a
-				different Info.plist file containing the property OSBundleRequired = "Local-Root". (Keep this
-				detail in mind: if you change something in Info.plist, be sure to make the same change in
-				Info-FILTER_BOOT_VOLUME.plist. There's no equivalent to #ifdef for plists.)
-				
-				Only build the "Filter Boot Volume" target if you really need to filter the boot volume.
-				Otherwise, build the default "Don't Filter Boot" target.
-			*/
-
-            (void) attachMediaObjectToDeviceTree(childMedia);
-
-#endif
-			
 			// Now publish the child media object.
-			
+
 			childMedia->registerService();
 
             return true;
@@ -267,17 +222,6 @@ void com_apple_dts_driver_SampleFilterScheme::stop(IOService* provider)
     // State our assumptions.
 
     assert(_childMedia);
-
-#ifdef FILTER_BOOT_VOLUME
-
-    // Detach the media object we previously attached to the device tree.
-	// See start() for an explanation of this call.
-	
-	if (_childMedia) {
-		detachMediaObjectFromDeviceTree(_childMedia);
-	}
-	
-#endif
 
     super::stop(provider);
 }
@@ -416,73 +360,3 @@ IOReturn com_apple_dts_driver_SampleFilterScheme::synchronizeCache(IOService* cl
 
     return getProvider()->synchronizeCache(this);
 }
-
-#ifdef FILTER_BOOT_VOLUME
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-bool com_apple_dts_driver_SampleFilterScheme::attachMediaObjectToDeviceTree(IOMedia* media)
-{
-	//
-	// Attach the given media object to the device tree plane.
-	//
-
-	IORegistryEntry* child;
-
-    DEBUG_LOG("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, media);
-
-	if ((child = getParentEntry(gIOServicePlane))) {
-
-		IORegistryEntry* parent;
-
-		if ((parent = child->getParentEntry(gIODTPlane))) {
-
-			const char* location = child->getLocation(gIODTPlane);
-			const char* name     = child->getName(gIODTPlane);
-
-			if (media->attachToParent(parent, gIODTPlane)) {
-				media->setLocation(location, gIODTPlane);
-				media->setName(name, gIODTPlane);
-
-				child->detachFromParent(parent, gIODTPlane);
-
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-void com_apple_dts_driver_SampleFilterScheme::detachMediaObjectFromDeviceTree(IOMedia* media)
-{
-	//
-	// Detach the given media object from the device tree plane.
-	//
-
-	IORegistryEntry* child;
-
-    DEBUG_LOG("%s[%p]::%s(%p)\n", getName(), this, __FUNCTION__, media);
-
-	if ((child = getParentEntry(gIOServicePlane))) {
-	 
-		IORegistryEntry * parent;
-
-		if ((parent = media->getParentEntry(gIODTPlane))) {
-
-			const char* location = media->getLocation(gIODTPlane);
-			const char* name     = media->getName(gIODTPlane);
-
-			if (child->attachToParent(parent, gIODTPlane)) {
-				child->setLocation(location, gIODTPlane);
-				child->setName(name, gIODTPlane);
-			}
-
-			media->detachFromParent(parent, gIODTPlane);
-		}
-	}
-}
-
-#endif

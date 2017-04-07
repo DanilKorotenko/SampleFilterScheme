@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		32D94FC60562CBF700B6AF17 /* SampleFilterScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* SampleFilterScheme.h */; };
 		32D94FCA0562CBF700B6AF17 /* SampleFilterScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* SampleFilterScheme.cpp */; settings = {ATTRIBUTES = (); }; };
-		BFF2FFA6091BD23300617F43 /* SampleFilterScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* SampleFilterScheme.h */; };
-		BFF2FFAA091BD23300617F43 /* SampleFilterScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* SampleFilterScheme.cpp */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,19 +16,11 @@
 		1A224C3FFF42367911CA2CB7 /* SampleFilterScheme.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleFilterScheme.cpp; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* SampleFilterScheme.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleFilterScheme.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
-		BFF2FFB0091BD23300617F43 /* SampleFilterScheme.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleFilterScheme.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF2FFBF091BD2FF00617F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32D94FCB0562CBF700B6AF17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFF2FFAB091BD23300617F43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				32D94FD00562CBF700B6AF17 /* SampleFilterScheme.kext */,
-				BFF2FFB0091BD23300617F43 /* SampleFilterScheme.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,14 +74,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32D94FC60562CBF700B6AF17 /* SampleFilterScheme.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFF2FFA5091BD23300617F43 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFF2FFA6091BD23300617F43 /* SampleFilterScheme.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,26 +100,6 @@
 			productReference = 32D94FD00562CBF700B6AF17 /* SampleFilterScheme.kext */;
 			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
-		BFF2FFA4091BD23300617F43 /* Filter Boot Volume */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BFF2FFAD091BD23300617F43 /* Build configuration list for PBXNativeTarget "Filter Boot Volume" */;
-			buildPhases = (
-				BFF2FFA5091BD23300617F43 /* Headers */,
-				BFF2FFA7091BD23300617F43 /* Resources */,
-				BFF2FFA9091BD23300617F43 /* Sources */,
-				BFF2FFAB091BD23300617F43 /* Frameworks */,
-				BFF2FFAC091BD23300617F43 /* Rez */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Filter Boot Volume";
-			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-			productName = SampleFilterScheme;
-			productReference = BFF2FFB0091BD23300617F43 /* SampleFilterScheme.kext */;
-			productType = "com.apple.product-type.kernel-extension.iokit";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,20 +119,12 @@
 			projectRoot = "";
 			targets = (
 				32D94FC30562CBF700B6AF17 /* Don't Filter Boot Volume */,
-				BFF2FFA4091BD23300617F43 /* Filter Boot Volume */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		32D94FC70562CBF700B6AF17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFF2FFA7091BD23300617F43 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -188,13 +141,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFF2FFAC091BD23300617F43 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -203,14 +149,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32D94FCA0562CBF700B6AF17 /* SampleFilterScheme.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFF2FFA9091BD23300617F43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFF2FFAA091BD23300617F43 /* SampleFilterScheme.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,51 +232,6 @@
 			};
 			name = Release;
 		};
-		BFF2FFAE091BD23300617F43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.2.0d1;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = FILTER_BOOT_VOLUME;
-				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_PREPROCESS = YES;
-				INFOPLIST_PREPROCESSOR_DEFINITIONS = "$(GCC_PREPROCESSOR_DEFINITIONS)";
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = com.apple.dts.driver.SampleFilterScheme;
-				MODULE_VERSION = 1.2.0d1;
-				PRODUCT_NAME = SampleFilterScheme;
-				WRAPPER_EXTENSION = kext;
-				ZERO_LINK = NO;
-			};
-			name = Debug;
-		};
-		BFF2FFAF091BD23300617F43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				CURRENT_PROJECT_VERSION = 1.2.0d1;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PREPROCESSOR_DEFINITIONS = FILTER_BOOT_VOLUME;
-				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_PREPROCESS = YES;
-				INFOPLIST_PREPROCESSOR_DEFINITIONS = "$(GCC_PREPROCESSOR_DEFINITIONS)";
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = com.apple.dts.driver.SampleFilterScheme;
-				MODULE_VERSION = 1.2.0d1;
-				PRODUCT_NAME = SampleFilterScheme;
-				WRAPPER_EXTENSION = kext;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -356,15 +249,6 @@
 			buildConfigurations = (
 				1DEB91DE08733DB10010E9CD /* Debug */,
 				1DEB91DF08733DB10010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BFF2FFAD091BD23300617F43 /* Build configuration list for PBXNativeTarget "Filter Boot Volume" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BFF2FFAE091BD23300617F43 /* Debug */,
-				BFF2FFAF091BD23300617F43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
