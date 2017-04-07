@@ -194,10 +194,11 @@ public:
      * Completion routine to call once the data transfer is complete.
      */
 
-    virtual void read(IOService*           client,
-                      UInt64               byteStart,
-                      IOMemoryDescriptor*  buffer,
-                      IOStorageCompletion  completion);
+    virtual void read(IOService *           client,
+                      UInt64                byteStart,
+                      IOMemoryDescriptor *  buffer,
+                      IOStorageAttributes * attributes,
+                      IOStorageCompletion * completion);
 
     /*!
      * @function write
@@ -222,11 +223,12 @@ public:
      * Completion routine to call once the data transfer is complete.
      */
 
-    virtual void write(IOService*           client,
-                       UInt64               byteStart,
-                       IOMemoryDescriptor*  buffer,
-                       IOStorageCompletion  completion);
-                       
+    virtual void write(IOService *           client,
+                       UInt64                byteStart,
+                       IOMemoryDescriptor *  buffer,
+                       IOStorageAttributes * attributes,
+                       IOStorageCompletion * completion);
+
     /*!
      * @function synchronizeCache
      * @discussion

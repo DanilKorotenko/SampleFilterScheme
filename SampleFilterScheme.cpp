@@ -308,7 +308,7 @@ bool com_apple_dts_driver_SampleFilterScheme::handleOpen(IOService* client,
 
     DEBUG_LOG("%s[%p]::%s(%p, %lu, %p)\n", getName(), this, __FUNCTION__, client, options, argument);
 
-    return getProvider()->open(this, options, (IOStorageAccess) argument);
+    return getProvider()->open(this, options, (IOStorageAccess) (uintptr_t) argument);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -352,10 +352,12 @@ void com_apple_dts_driver_SampleFilterScheme::handleClose(IOService* client, IOO
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void com_apple_dts_driver_SampleFilterScheme::read(IOService* __attribute__ ((unused)) client,
-                                                   UInt64 byteStart,
-                                                   IOMemoryDescriptor* buffer,
-                                                   IOStorageCompletion completion)
+void com_apple_dts_driver_SampleFilterScheme::read(
+	IOService *           client,
+	UInt64                byteStart,
+	IOMemoryDescriptor *  buffer,
+	IOStorageAttributes * attributes,
+	IOStorageCompletion * completion)
 {
     //
     // Read data from the storage object at the specified byte offset into the
@@ -371,15 +373,17 @@ void com_apple_dts_driver_SampleFilterScheme::read(IOService* __attribute__ ((un
 
     DEBUG_LOG("%s[%p]::%s(%p, %llu, %p, %p)\n", getName(), this, __FUNCTION__, client, byteStart, buffer, &completion);
 
-    getProvider()->read(this, byteStart, buffer, completion);
+    getProvider()->read(this, byteStart, buffer, attributes, completion);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void com_apple_dts_driver_SampleFilterScheme::write(IOService* __attribute__ ((unused)) client,
-                                                    UInt64 byteStart,
-                                                    IOMemoryDescriptor* buffer,
-                                                    IOStorageCompletion completion)
+void com_apple_dts_driver_SampleFilterScheme::write(
+	IOService *           client,
+	UInt64                byteStart,
+	IOMemoryDescriptor *  buffer,
+	IOStorageAttributes * attributes,
+	IOStorageCompletion * completion)
 {
     //
     // Write data into the storage object at the specified byte offset from the
@@ -395,7 +399,7 @@ void com_apple_dts_driver_SampleFilterScheme::write(IOService* __attribute__ ((u
 
     DEBUG_LOG("%s[%p]::%s(%p, %llu, %p, %p)\n", getName(), this, __FUNCTION__, client, byteStart, buffer, &completion);
 
-    getProvider()->write(this, byteStart, buffer, completion);
+    getProvider()->write(this, byteStart, buffer, attributes, completion);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
