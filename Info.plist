@@ -18,6 +18,8 @@
 	<string>1.2.0d1</string>
 	<key>CFBundleGetInfoString</key>
 	<string>1.2.0d1, Copyright © 2002-2005 Apple</string>
+	<key>OSBundleEnableKextLogging</key>
+	<true/>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>Apple_DTS_Filtered_HFS</key>

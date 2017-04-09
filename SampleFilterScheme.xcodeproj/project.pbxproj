@@ -7,9 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32D94FC60562CBF700B6AF17 /* SampleFilterScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A224C3EFF42367911CA2CB7 /* SampleFilterScheme.h */; };
 		32D94FCA0562CBF700B6AF17 /* SampleFilterScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A224C3FFF42367911CA2CB7 /* SampleFilterScheme.cpp */; settings = {ATTRIBUTES = (); }; };
+		DAF3E2A51E97BDE200C30C78 /* checkKextLoaded.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAF3E29F1E97BD4500C30C78 /* checkKextLoaded.sh */; };
+		DAF3E2A61E97BDE200C30C78 /* installKext.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAF3E2A01E97BD4500C30C78 /* installKext.sh */; };
+		DAF3E2A71E97BDE200C30C78 /* loadKext.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAF3E2A11E97BD4500C30C78 /* loadKext.sh */; };
+		DAF3E2A81E97BDE200C30C78 /* removeKext.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAF3E2A21E97BD4500C30C78 /* removeKext.sh */; };
+		DAF3E2A91E97BDE200C30C78 /* unloadKext.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAF3E2A31E97BD4500C30C78 /* unloadKext.sh */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAF3E2A41E97BDDC00C30C78 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				DAF3E2A51E97BDE200C30C78 /* checkKextLoaded.sh in CopyFiles */,
+				DAF3E2A61E97BDE200C30C78 /* installKext.sh in CopyFiles */,
+				DAF3E2A71E97BDE200C30C78 /* loadKext.sh in CopyFiles */,
+				DAF3E2A81E97BDE200C30C78 /* removeKext.sh in CopyFiles */,
+				DAF3E2A91E97BDE200C30C78 /* unloadKext.sh in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A224C3EFF42367911CA2CB7 /* SampleFilterScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFilterScheme.h; sourceTree = "<group>"; };
@@ -17,22 +38,18 @@
 		32D94FD00562CBF700B6AF17 /* SampleFilterScheme.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleFilterScheme.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 		BFF2FFBF091BD2FF00617F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAF3E29F1E97BD4500C30C78 /* checkKextLoaded.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkKextLoaded.sh; sourceTree = "<group>"; };
+		DAF3E2A01E97BD4500C30C78 /* installKext.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = installKext.sh; sourceTree = "<group>"; };
+		DAF3E2A11E97BD4500C30C78 /* loadKext.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = loadKext.sh; sourceTree = "<group>"; };
+		DAF3E2A21E97BD4500C30C78 /* removeKext.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = removeKext.sh; sourceTree = "<group>"; };
+		DAF3E2A31E97BD4500C30C78 /* unloadKext.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = unloadKext.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		32D94FCB0562CBF700B6AF17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		089C166AFE841209C02AAC07 /* SampleFilterScheme */ = {
 			isa = PBXGroup;
 			children = (
+				DAF3E29E1E97BD2700C30C78 /* Scripts */,
 				247142CAFF3F8F9811CA285C /* Source */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
@@ -66,29 +83,27 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		32D94FC50562CBF700B6AF17 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32D94FC60562CBF700B6AF17 /* SampleFilterScheme.h in Headers */,
+		DAF3E29E1E97BD2700C30C78 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				DAF3E29F1E97BD4500C30C78 /* checkKextLoaded.sh */,
+				DAF3E2A01E97BD4500C30C78 /* installKext.sh */,
+				DAF3E2A11E97BD4500C30C78 /* loadKext.sh */,
+				DAF3E2A21E97BD4500C30C78 /* removeKext.sh */,
+				DAF3E2A31E97BD4500C30C78 /* unloadKext.sh */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			path = Scripts;
+			sourceTree = "<group>";
 		};
-/* End PBXHeadersBuildPhase section */
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		32D94FC30562CBF700B6AF17 /* Don't Filter Boot Volume */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "Don't Filter Boot Volume" */;
 			buildPhases = (
-				32D94FC50562CBF700B6AF17 /* Headers */,
-				32D94FC70562CBF700B6AF17 /* Resources */,
 				32D94FC90562CBF700B6AF17 /* Sources */,
-				32D94FCB0562CBF700B6AF17 /* Frameworks */,
-				32D94FCC0562CBF700B6AF17 /* Rez */,
+				DAF3E2A41E97BDDC00C30C78 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -122,26 +137,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		32D94FC70562CBF700B6AF17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXRezBuildPhase section */
-		32D94FCC0562CBF700B6AF17 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32D94FC90562CBF700B6AF17 /* Sources */ = {
